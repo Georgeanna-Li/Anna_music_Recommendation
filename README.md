@@ -47,13 +47,21 @@ As we all know, SPOTIFY is one of the most popular music players in the world.Yo
 
 However, there is another module in Python called Spotipy which offers more friendly-written API, thus I choose this module to build my chatbot.
 Once you have logged in spofify developer, pass your client_id and client_secret into the terminal like this:
-
-(```
+```
 export SPOTIPY_CLIENT_ID=your_client_id
-```)
-(```
 export SPOTIPY_CLIENT_SECRET=your_client_secret
-```)
+```
+In your python script, install module Spotipy, and pass the credentials:
+```
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+```
+```
+client_credentials_manager = SpotifyClientCredentials()
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+```
 
-In your python script, install module Spotipy:
+
+
+
 
