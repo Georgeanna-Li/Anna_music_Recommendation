@@ -26,7 +26,10 @@ The first four intents include no entities, and for the rest, it's hard to extra
 [This is the document introducing regular expressions](https://docs.python.org/2/library/re.html)
 
 I use regular expressions as the number one back-up plan to extract entities for user messages. Admittedly, we could write a scrapy script and create a database recording tracks, albums and their corresponding artists. But it would be a large database, and sometimes ask the user directly whether they are implying an artist or an album/track is the better choice.
-Unlike human language, language processed by the machine has many limitations. For example, when I tell you "I want to know some albums by Wakin Chau", you know that I am looking for the artist Wakin Chau's tracks, not some albums called "Wakin Chau". In other word, I am searching music based on an artist, not an album. In most time, when people mention an artist's name, their intent would probably be "artist_search", which means the priority of "artist_search" is higher than that of "music_search". Plus, "...by..." is a critical word that could indicate that the user is suggesting an "artist_search".
+
+Unlike human language, language processed by the machine has many limitations. For example, when I tell you "I want to know some albums by Wakin Chau", you know that I am looking for the artist Wakin Chau's tracks, not some albums called "Wakin Chau". In other word, I am searching music based on an artist, not an album. 
+
+In most time, when people mention an artist's name, their intent would probably be "artist_search", which means the priority of "artist_search" is higher than that of "music_search". Plus, "...by..." is a critical word that could indicate that the user is suggesting an "artist_search".
 ## 3. SPACY
 [This is the official document for SPACY](https://spacy.io/api/doc)
 
@@ -39,4 +42,15 @@ The chat is something looks like this:
 The bot will return a list of tracks in an album:
 ![Alt text](https://github.com/Georgeanna-Li/Anna_music_Recommendation/blob/master/pic2.png)
 
+# SPOTIFY&SPOTIPY
+As we all know, SPOTIFY is one of the most popular music players in the world.You can get your spotify developer token from here [SPOTIFY DEVELOPER](https://developer.spotify.com/dashboard/login)
+
+However, there is another module in Python called Spotipy which offers more friendly-written API, thus I choose this module to build my chatbot.
+Once you have logged in spofify developer, pass your client_id and client_secret into the terminal like this:
+(```
+export SPOTIPY_CLIENT_ID=your_client_id
+export SPOTIPY_CLIENT_SECRET=your_client_secret
+```)
+
+In your python script, install module Spotipy:
 
