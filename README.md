@@ -60,7 +60,11 @@ from spotipy.oauth2 import SpotifyClientCredentials
 client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 ```
+# FACEBOOK MESSENGER
+Set up a fan page using your FB account, and then add a new application on facebook developer page like this:
 
+# FRONT END
+This page introduces a method to host a WebApp without building a server using Pythonanywhere,but I apply a server anyway on Microsoft Azure, thanks to the 200$ free trial for the first month.
 
 
 
