@@ -18,6 +18,7 @@ The project is based on rasa_nlu, I created rasa.json to train some sentences pe
   * artist_search
   * genre_search
   * latest
+
 The first four intents include no entities, and for the rest, it's hard to extract users' indentities in real practice due to the small amount of data. Thus I combined other methods to do this. However, for intent extraction, this trianing has proved its robustness.
 ## 2. REGULAR EXPRESSIONS
 
