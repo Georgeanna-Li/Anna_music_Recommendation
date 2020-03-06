@@ -50,7 +50,10 @@ Once you have logged in spofify developer, pass your client_id and client_secret
 
 (```
 export SPOTIPY_CLIENT_ID=your_client_id
-export SPOTIPY_CLIENT_SECRET=your_client_secret```)
+```)
+(```
+export SPOTIPY_CLIENT_SECRET=your_client_secret
+```)
 
 In your python script, install module Spotipy:
 
