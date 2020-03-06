@@ -1,0 +1,234 @@
+from rasa.nlu import config
+from rasa.nlu.model import Trainer
+from rasa.nlu.config import RasaNLUModelConfig
+from rasa.nlu.training_data import load_data
+import spacy
+import spotipy
+import pprint
+import sys
+import random
+import os
+import sys
+import re
+from spotipy.oauth2 import SpotifyClientCredentials
+
+
+from flask import Flask, request
+from pymessenger import Bot
+app = Flask(__name__)
+ACCESS_TOKEN = '**your facebook developer token**'  #obtain from facebook developer page
+VERIFY_TOKEN = '**your verification token**'
+bot = Bot(ACCESS_TOKEN)
+app = Flask(__name__)
+@app.route('/', methods=['GET'])
+def verify():
+ # Webhook verification
+    if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
+        if not request.args.get("hub.verify_token") == VERIFY_TOKEN:
+            return "Verification token mismatch", 403
+        return request.args["hub.challenge"], 200
+    return "Hello world", 200
+@app.route("/", methods=['GET', 'POST'])
+
+
+
+def receive_message1():
+    if request.method == 'GET':
+        """Before allowing people to message your bot, Facebook has implemented a verify token
+        that confirms all requests that your bot receives came from Facebook."""
+        token_sent = request.args.get("hub.verify_token")
+        return verify_fb_token(token_sent)
+    #if the request was not get, it must be POST and we can just proceed with sending a message back to user
+    else:
+        # get whatever message a user sent the bot
+       output = request.get_json()
+       log(output)
+
+       for event in output['entry']:
+          messaging = event['messaging']
+          for message in messaging:
+            if message.get('message'):
+                #Facebook Messenger ID for user so we know where to send response back to
+                recipient_id = message['sender']['id']     # 用户id,写入sqlite
+                if message['message'].get('text'):
+                    msg = message["entry"][0]["messaging"][0]["message"]["text"]  #get the text message
+                    intent = interpret(msg)
+                    match = re.search("(.*)what(.*)", msg)
+                    if match is not None:
+                        send_message(
+                            recipient_id, "You can start by typing artist/album +  name")
+                        intent = "none"
+
+                    if intent == "greet":
+                        temp = ["HEY THERE! I am your music bot~",
+                                "Try to get your recommendations by typing an artist, an album or a music genre you like."]
+                        send_message(recipient_id,random.choice(temp))
+                    
+                    if intent == "latest":
+                        new_releases(recipient_id)
+
+                    if intent == "artist_search" or "artist" in msg:
+                        match1 = re.search("artist(.+)",msg)                           
+                        send_message(recipient_id, "It seems that you love the artist.")
+                        entity = match1.group(1)
+                        b1 = get_artist_id(entity)
+                        b2 = artist_top_tracks(b1, recipient_id)
+                        intent = "none"
+
+                
+                    if intent == "music_search" or "album" in msg:
+                        match2 = re.search("album(.+)", msg)  
+                        if match2 is None:
+                            name = "lover"
+                            send_message(recipient_id, "I am sorry-I can't find such album, so I find an album I like for you:")
+                            a1 = get_album_id(name)
+                            a2 = show_album_tracks(a1, recipient_id)
+                        else:
+                            name = match2.group(1)
+                            a1 = get_album_id(name)
+                            tempa1 = "If you are looking for album : " + name + "I have found its tracks for you"
+                            send_message(recipient_id, tempa1)
+                            a2 = show_album_tracks(a1, recipient_id)
+                            intent = "none"
+                    
+                    if intent == "genre_search":
+                        nlp = spacy.load("en_core_web_md")
+                        doc = nlp(msg)
+                        entity = "default"
+                        for i in range(len(doc)):
+                            if doc[i].text in genre:
+                                entity = doc[i].text
+                        if entity == "default":
+                            entity = random.choice(genre)
+                            tempc1 =  "I am sorry-there seems to be no such genre,\n let me give you the " + entity + " instead:"
+                            send_message(recipient_id, tempc1)
+                        c1 = genre_search(entity)
+                        tempc2 = "Here is a playlist of " + entity.capitalize()
+                        send_message(recipient_id, tempc2)
+                        c2 = playlist_tracks(c1,recipient_id)
+                        intent = "none"
+
+                    if intent  == "goodbye":
+                        send_message(recipient_id, "It is nice to help you! Have a good day!")
+                    
+                    send_message(recipient_id, "what else?")
+                #if user sends us a GIF, photo,video, or any other non-text item
+                if message['message'].get('attachments'):
+                    response_sent_nontext = get_message()
+                    send_message(recipient_id, response_sent_nontext)
+    return "Message Processed"
+
+
+def get_artist_id(name):
+    results = sp.search(q=name, type='artist',limit=5)
+    name1 = results["artists"]["items"][0]["id"]
+    return name1
+
+
+def get_album_id(name):
+    results = sp.search(q=name, type='album',limit=5)
+    name2 = results["albums"]["items"][0]["id"]
+    return name2
+
+
+def interpret(message):
+    msg = message.lower()
+    process = interpreter.parse(msg)
+    intent = process['intent']['name']
+    return intent
+
+def show_album_tracks(album_id, recipient_id):
+    tracks = []
+    results = sp.album_tracks(album_id)
+    tracks.extend(results['items'])
+    while results['next']:
+        results = sp.next(results)
+        tracks.extend(results['items'])
+    for track in tracks:
+        bot.send_text_message(recipient_id, '  '+track['name'])
+
+
+def new_releases(recipient_id):
+    find = sp.new_releases(limit=5)
+    artist_name = []
+    release = []
+    type_ = []
+    for i in range(5):
+        artist_name.append(find["albums"]['items'][i]['artists'][0]['name'])
+        release.append(find["albums"]['items'][i]["name"])
+        type_.append(find["albums"]["items"][i]["album_type"])
+    bot.send_text_message(recipient_id, "These are the latest releases:")
+    for j in range(len(artist_name)):
+        temp = type_[j] + "\t" + release[j] + " \t" + artist_name[j]
+        bot.send_text_message(recipient_id, temp)
+
+
+def genre_search(genre):
+    find = sp.category_playlists(category_id=genre, limit=2)
+    if find:
+        listname = find["playlists"]["items"][0]["name"]
+        list_id = find["playlists"]["items"][0]["id"]
+        return list_id
+    else:
+        return "none"
+
+
+def playlist_tracks(list_id,recipient_id):
+    find = sp.playlist_tracks(playlist_id=list_id, limit=25)
+    music = []
+    artist = []
+    for i in range(6):
+        music.append(find["items"][i]["track"]["name"])
+        artist.append(find["items"][i]["track"]["artists"][0]["name"])
+    for j in range(len(music)):
+        temp = artist[j] + ":  " + music[j]
+        bot.send_text_message(recipient_id, temp)
+
+
+def artist_top_tracks(artist_id,recipient_id):
+    send_message(recipient_id, "This artist's top tracks:")
+    response = sp.artist_top_tracks(artist_id)
+    for track in response['tracks']:
+        send_message(recipient_id, track['name'])
+
+
+def get_message():
+    sample_responses = ["That's a lovely pic!", "Awww I like that",
+                        "Aha!", "Mm.. What's up?"]
+    # return selected item to the user
+    return random.choice(sample_responses)
+
+def verify_fb_token(token_sent):
+    #take token sent by facebook and verify it matches the verify token you sent
+    #if they match, allow the request, else return an error
+    if token_sent == VERIFY_TOKEN:
+        return request.args.get("hub.challenge")
+    return 'Invalid verification token'
+
+
+#uses PyMessenger to send response to user
+def send_message(recipient_id, response):
+    #sends user the text message provided via input response parameter
+    bot.send_text_message(recipient_id, response)
+    return "success"
+
+def log(message):
+    print(message)
+    sys.stdout.flush()
+
+
+if __name__ == "__main__":
+    client_credentials_manager = SpotifyClientCredentials()
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    nlp = spacy.load("en_core_web_md")
+
+    trainer = Trainer(config.load("config_spacy.yml"))
+    # Load the training data
+    training_data = load_data("rasa.json")
+    # Create an interpreter by training the model
+    interpreter = trainer.train(training_data)
+    genre = ['toplists', 'pop', 'hiphop', 'chill', 'kpop', 'mood', 'rock',
+             'sleep', 'rnb', 'focus', 'jazz', 'workout', 'classical', 'romance', 'party', 'inspirational',
+             'soul', 'wellness', 'travel', 'family', 'dinner', 'latin',
+             'gaming', 'country', 'funk', 'punk', 'metal', 'blues']
+    app.run(debug = True, port = 8080)
