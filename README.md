@@ -8,7 +8,7 @@ There are a number of changes commited when I am transplanting my python code to
 
 Since I am learning NLP, I would like to practice all the skills to extract entities and intents for a given message.
 ## 1. RASA
-[Rasa tutorial:](https://rasa.com/docs/rasa/user-guide/rasa-tutorial/)
+![Rasa tutorial:](https://rasa.com/docs/rasa/user-guide/rasa-tutorial/)
 The project is based on rasa_nlu, I created rasa.json to train some sentences people usually use when they ask for music recommendations. I have trained intents including:
   * greet
   * goodbye
