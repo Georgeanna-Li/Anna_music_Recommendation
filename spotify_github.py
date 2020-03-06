@@ -183,7 +183,7 @@ if __name__ == '__main__':
             intent = interpret(message)
 
         if intent == "artist_search" or " by " in message:
-            print("It seems that you love the artist. Can you retype his/her name?")
+            print("It seems that you love the artist. Can you retype his/her name?")  # Further ensure that the user is requiring artist_search
             entity = input()
             b1 = get_artist_id(entity)
             b2 = artist_top_tracks(b1)
@@ -198,7 +198,7 @@ if __name__ == '__main__':
             print("OK, what else?")
 
         if intent == "music_search" or "album" in message:
-            match = re.search("(.*)album(.+)", message)  # 正则表达获取专辑名称
+            match = re.search("(.*)album(.+)", message)  # use regular expression to get the album name
             if match is None:
                 name = input(
                     "Are you looking for an album? If so, please tell me its full name:\n")
