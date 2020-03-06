@@ -1,0 +1,681 @@
+{
+  "rasa_nlu_data": {
+    "regex_features": [
+      {
+        "name": "zipcode",
+        "pattern": "[0-9]{5}"
+      },
+      {
+        "name": "timestamp",
+        "pattern": "[0-9]{4}"
+      },
+      {
+        "name": "greet",
+        "pattern": "hey[^\\s]*"
+      }
+    ],
+    "entity_synonyms": [
+      {
+        "value": "edm_dance",
+        "synonyms": ["edm", "electronic dance", "electronic dance music"]
+      },
+      {
+        "value": "indie_alt",
+        "synonyms": ["indian", "indian music"]
+      },
+      {
+        "value": "rnb",
+        "synonyms": ["RB", "Rnb"]
+      },
+      {
+        "value": "toplists",
+        "synonyms": ["top", "top one"]
+      },
+      {
+        "value": "Hip-pop",
+        "synonyms": ["hippop","hip pop"]
+      },
+      {
+        "value": "romance",
+        "synonyms": ["love","love songs"]
+      }
+    ],
+    "common_examples": [
+      {
+        "text": "hey", 
+        "intent": "greet", 
+        "entities": []
+      }, 
+      {
+        "text": "howdy", 
+        "intent": "greet", 
+        "entities": []
+      }, 
+      {
+        "text": "hey there",
+        "intent": "greet", 
+        "entities": []
+      }, 
+      {
+        "text": "hello", 
+        "intent": "greet", 
+        "entities": []
+      }, 
+      {
+        "text": "hi", 
+        "intent": "greet", 
+        "entities": []
+      },
+      {
+        "text": "how are you",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "good morning",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "good evening",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "dear sir",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "yes", 
+        "intent": "affirm", 
+        "entities": []
+      }, 
+      {
+        "text": "yep", 
+        "intent": "affirm", 
+        "entities": []
+      }, 
+      {
+        "text": "yeah", 
+        "intent": "affirm", 
+        "entities": []
+      },
+      {
+        "text": "indeed",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "that's right",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "ok",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "great",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "right, thank you",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "correct",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "great choice",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "sounds really good",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "that's not what I want",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "no",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "wrong",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "nope",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "you got me wrong",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "no thanks",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "i don't like this one",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "i already know this",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "I like westlife so much!",
+        "intent": "artist_search",
+        "entities": [
+          {
+            "start": 7,
+            "end": 15,
+            "value": "westlife",
+            "entity": "artist"
+          }
+        ]
+      },
+      {
+        "text": "I am searching for something called ladykiller",
+        "intent": "music_search",
+        "entities": [
+            {
+              "start":36,
+              "end":46,
+              "value":"ladykiller",
+              "entity":"music"
+            }
+        ]
+      },
+      {
+        "text": "hello, I want to hear some sad music",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 27,
+            "end": 30,
+            "value": "sad",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "hi, I would like some romance songs",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 22,
+            "end": 29,
+            "value": "romance",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "I want to hear country music",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 15,
+            "end": 22,
+            "value": "country",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "can you recommend me some piano music",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 26,
+            "end": 31,
+            "value": "piano",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "I like the band maroon 5 so much",
+        "intent": "artist_search",
+        "entities": [
+          {
+            "start": 16,
+            "end": 24,
+            "value": "maroon 5",
+            "entity": "artist"
+          }
+        ]
+      },
+      {
+        "text": "I like pop music",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 7,
+            "end": 10,
+            "value": "pop",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "I like hippop",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 7,
+            "end": 10,
+            "value": "Hip-pop",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "I would like some classic music",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 18,
+            "end": 25,
+            "value": "classic",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "give me something trending",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 18,
+            "end": 26,
+            "value": "trending",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "Can you recommend me some jazz music",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 26,
+            "end": 30,
+            "value": "jazz",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "show me the latest album by Lady Gaga",
+        "intent": "artist_search",
+        "entities": [
+          {
+            "start": 28,
+            "end": 37,
+            "value": "Lady Gaga",
+            "entity": "artist"
+          }
+        ]
+      },
+      {
+        "text": "do you have anything by selina?",
+        "intent": "artist_search",
+        "entities": [
+          {
+            "start": 24,
+            "end": 30,
+            "value": "selina",
+            "entity": "artist"
+          }
+        ]
+      },
+      {
+        "text": "music by Justin",
+        "intent": "artist_search",
+        "entities": [
+          {
+            "start": 9,
+            "end": 15,
+            "value": "Justin",
+            "entity": "artist"
+          }
+        ]
+      },
+      {
+        "text": "I want to hear some music by Taylor",
+        "intent": "artist_search",
+        "entities": [
+          {
+            "start": 29,
+            "end": 35,
+            "value": "Taylor",
+            "entity": "artist"
+          }
+        ]
+      },
+      {
+        "text": "I am looking for an indian music called Hotbollywood",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 20,
+            "end": 26,
+            "value": "indian",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "search for artist james",
+        "intent": "artist_search",
+        "entities": [
+          {
+            "start": 18,
+            "end": 23,
+            "value": "maroon 5",
+            "entity": "artist"
+          }
+        ]
+      },
+      {
+        "text": "search for singer maroon 5",
+        "intent": "artist_search",
+        "entities": [
+          {
+            "start": 18,
+            "end": 26,
+            "value": "maroon 5",
+            "entity": "artist"
+          }
+        ]
+      },
+      {
+        "text": "search for album rare",
+        "intent": "music_search",
+        "entities": [
+          {
+            "start": 17,
+            "end": 22,
+            "value": "rare",
+            "entity": "music"
+          }
+        ]
+      },
+      {
+        "text": "search for music happy",
+        "intent": "music_search",
+        "entities": [
+          {
+            "start": 17,
+            "end": 22,
+            "value": "lover",
+            "entity": "music"
+          }
+        ]
+      },
+      {
+        "text": "search for track lover",
+        "intent": "music_search",
+        "entities": [
+          {
+            "start": 17,
+            "end": 22,
+            "value": "lover",
+            "entity": "music"
+          }
+        ]
+      },
+      {
+        "text": "album lover",
+        "intent": "music_search",
+        "entities": [
+          {
+            "start": 6,
+            "end": 11,
+            "value": "lover",
+            "entity": "music"
+          }
+        ]
+      },
+      {
+        "text": "i like the album rare",
+        "intent": "music_search",
+        "entities": [
+          {
+            "start": 17,
+            "end": 21,
+            "value": "rare",
+            "entity": "music"
+          }
+        ]
+      },
+      {
+        "text": "i love the album Hands all over",
+        "intent": "music_search",
+        "entities": [
+          {
+            "start": 17,
+            "end": 31,
+            "value": "Hands all over",
+            "entity": "music"
+          }
+        ]
+      },
+      {
+        "text": "the album cinematic",
+        "intent": "music_search",
+        "entities": [
+          {
+            "start": 10,
+            "end": 19,
+            "value": "cinematic",
+            "entity": "music"
+          }
+        ]
+      },
+      {
+        "text": "search for latest release",
+        "intent": "latest",
+        "entities": []
+      },
+      {
+        "text": "latest release",
+        "intent": "latest",
+        "entities": []
+      },
+      {
+        "text": "new album",
+        "intent": "latest",
+        "entities": []
+      },
+      {
+        "text": "I want to hear the latest music",
+        "intent": "latest",
+        "entities": []
+      },
+      {
+        "text": "do you know any latest album?",
+        "intent": "latest",
+        "entities": []
+      },
+      {
+        "text": "new releases",
+        "intent": "latest",
+        "entities": []
+      },
+      {
+        "text": "new tracks",
+        "intent": "latest",
+        "entities": []
+      },
+      {
+        "text": "anything for a party",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 15,
+            "end": 20,
+            "value": "party",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "some music for my wedding",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 18,
+            "end": 25,
+            "value": "wedding",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "I am looking for asian music",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 17,
+            "end": 22,
+            "value": "asian",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "I want something for my workout",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 24,
+            "end": 31,
+            "value": "workout",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "recently i had a crush on billy",
+        "intent": "artist_search",
+        "entities": [
+          {
+            "start": 26,
+            "end": 31,
+            "value": "billy",
+            "entity": "artist"
+          }
+        ]
+      },
+      {
+        "text": "recently i love the artist shawn very much",
+        "intent": "artist_search",
+        "entities": [
+          {
+            "start": 27,
+            "end": 32,
+            "value": "shawn",
+            "entity": "artist"
+          }
+        ]
+      },
+      {
+        "text": "I am looking for electronic",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 17,
+            "end": 27,
+            "value": "electronic",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "I want music for travel",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 17,
+            "end": 23,
+            "value": "travel",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "music to focus",
+        "intent": "genre_search",
+        "entities": [
+          {
+            "start": 9,
+            "end": 14,
+            "value": "focus",
+            "entity": "genre"
+          }
+        ]
+      },
+      {
+        "text": "bye", 
+        "intent": "goodbye", 
+        "entities": []
+      }, 
+      {
+        "text": "88",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "goodbye", 
+        "intent": "goodbye", 
+        "entities": []
+      }, 
+      {
+        "text": "good bye", 
+        "intent": "goodbye", 
+        "entities": []
+      }, 
+      {
+        "text": "stop", 
+        "intent": "goodbye", 
+        "entities": []
+      }, 
+      {
+        "text": "end", 
+        "intent": "goodbye", 
+        "entities": []
+      },
+      {
+        "text": "farewell",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "Bye bye",
+        "intent": "goodbye",
+        "entities": []
+      }
+    ]
+  }
+}
