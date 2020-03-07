@@ -37,7 +37,7 @@ In the third part "genre_search", I use doc.ents in spacy to help me find which 
 
 # PIC DISPLAY
 The chat is something looks like this:
-![Alt text](https://github.com/Georgeanna-Li/Anna_music_Recommendation/blob/master/pic1.png)
+![Alt text](https://github.com/Georgeanna-Li/Anna_music_Recommendation/blob/master/art/pic1.png)
 
 The bot will return a list of tracks in an album:
 ![Alt text](https://github.com/Georgeanna-Li/Anna_music_Recommendation/blob/master/pic2.png)
