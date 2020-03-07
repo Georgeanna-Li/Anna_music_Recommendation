@@ -40,7 +40,7 @@ The chat is something looks like this:
 ![Alt text](https://github.com/Georgeanna-Li/Anna_music_Recommendation/blob/master/art/pic1.png)
 
 The bot will return a list of tracks in an album:
-![Alt text](https://github.com/Georgeanna-Li/Anna_music_Recommendation/blob/master/pic2.png)
+![Alt text](https://github.com/Georgeanna-Li/Anna_music_Recommendation/blob/master/art/pic2.png)
 
 # SPOTIFY&SPOTIPY
 As we all know, SPOTIFY is one of the most popular music players in the world.You can get your spotify developer token from here [SPOTIFY DEVELOPER](https://developer.spotify.com/dashboard/login)
