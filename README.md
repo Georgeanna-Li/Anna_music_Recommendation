@@ -35,6 +35,8 @@ In most time, when people mention an artist's name, their intent would probably 
 
 In the third part "genre_search", I use doc.ents in spacy to help me find which genre the user is asking for. For example, when the user enters "I wanna find some music for my brother's wedding", doc.ents will examine each word one by one and see if there is a matchable music genre. Apparently, in this case, we get the answer--"wedding". Then we call a function to obtain a playlist of "wedding" genre.
 
+The complete script is complete.py in the folder Spotify with other test scripts.
+
 # PIC DISPLAY
 The chat is something looks like this:
 ![Alt text](https://github.com/Georgeanna-Li/Anna_music_Recommendation/blob/master/art/pic1.png)
