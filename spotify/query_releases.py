@@ -37,6 +37,8 @@ for i in range(len(artist_name)):
         "INSERT INTO new_releases(artist_name, release, type_) VALUES (?, ?, ?)", table)
     c.execute("commit")
 
+    
+# define default responses to choose from
 responses = [
     '{} is a top hit!',
     'I would recommend {} for you!',
@@ -76,14 +78,3 @@ what_type_only(msg1)
 msg2 = input("Which artist do you like?")
 artist_only(msg2)
 
-'''
-a = c.execute("SELECT type_,artist_name FROM new_releases WHERE artist_name like ?",('L%',))
-print(a.fetchall())
-'''
-
-
-
-'''
-export SPOTIPY_CLIENT_ID=fd27c40c6e2a4908be64f094bde44268
-export SPOTIPY_CLIENT_SECRET=2cbdbbdfaa5247189c007626fa317040
-'''
