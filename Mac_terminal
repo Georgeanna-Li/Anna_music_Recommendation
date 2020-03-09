@@ -1,0 +1,23 @@
+1. clear  清除终端屏幕
+2. 终止当前进程：control + z
+3. cd +name进入文件夹       cd ..  切换到上级目录
+4. ls (list)
+5. pwd  查看文件路径
+6. touch  +name新建文件
+7. mkdir  +name新建文件夹       
+8. rm -r +name  删除文件夹    rm +name 删除文件
+9. which +name   执行路径
+10. cp +路径+到那里       copy复制文件
+11. mv +name + ../路径      move移动文件
+12. cat +name         vim +name       两种打开文件的方式
+13. tail -f +name       也是打开文件的方式，是一种监听的状态
+14. head -n 5 +name    查看文件前五行
+15. sudo 最高管理权限
+16. tar -cvzf +压缩后名称  +要压缩的文件           压缩
+17. -xvzf +要解压的文件名         解压
+18. chmod -R 777 +name     ？？？？？少用？
+19. ping +网址
+20. wc -l +name   查看文件有多少行
+21. grep 222 +name  |  wc -l    查看222在文件中出现了几次
+22. ln -s +name  +路径         软连接
+23. find / -name       查找
