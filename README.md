@@ -62,12 +62,15 @@ from spotipy.oauth2 import SpotifyClientCredentials
 client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 ```
+I have written many scripts to test my functions separately, and I also combine sqlite3 to create database and store information about new releases. Users can make more explicit queries about whether they want to hear album/single, or whether they prefer one artist. I put all of the scripts in the folder spotify.
+
 # FACEBOOK MESSENGER
 Set up a fan page using your FB account, and then add a new application on facebook developer page like this:
+![Alt text](https://github.com/Georgeanna-Li/Anna_music_Recommendation/blob/master/art/fb.png)
 
 # FRONT END
 This page introduces a method to host a WebApp without building a server using Pythonanywhere,but I apply a server anyway on Microsoft Azure, thanks to the 200$ free trial for the first month.
+![Alt text](https://github.com/Georgeanna-Li/Anna_music_Recommendation/blob/master/art/azure.png)
 
-
-
+I found a sample script on how to connect your python code to the webhook online, and after some adjustification, I made it a auto-reply script. See the folder webhook for more details.
 
