@@ -1,0 +1,51 @@
+#Sportify
+export SPOTIPY_CLIENT_ID=fd27c40c6e2a4908be64f094bde44268
+export SPOTIPY_CLIENT_SECRET=2cbdbbdfaa5247189c007626fa317040
+
+
+
+# FB messenger credentials
+EAADZACVA4gnYBAEJRORgTvzMiZCE8JbDqVJcodpMDZACDAYJULbKcjC0rLEI5eS0qUsMD4ov2ZBgcjln5omRQzolOjs0NN8EFYt10vx6gurqun218HVMtX1JHFIk9BHYzsS3hZBvXZAp2Lb00ZBk1ZArtYVTeF30TIscH66Tn2n2bZBLh3L6PTJXO
+
+# api.ai credentials
+CLIENT_ACCESS_TOKEN = "7332eb50fb1c47469474d6f4b0d103f0"
+
+#终端启动：
+ssh anna@137.135.87.213
+密码：
+annamusic 
+
+
+
+
+nano webhook.py    #编辑
+sudo su # 开始进入调试debug
+python3 webhook.py    运行
+nano rasa.json  # 创建
+rm -rf webhook.py       #删除
+
+
+关于webhook：
+
+ps -ef | grep ngrok
+￼
+curl http://localhost:4040/api/tunnels | jq ".tunnels[0].public_url"  #看哪个网址，然后去Facebook developer里面修改网址和验证权杖
+权杖：annamusicrecommendation
+
+
+返回信息：
+{'object': 'page', 'entry': [{'messaging': [{'recipient': {'id': '108222204112368'}, 'sender': {'id': '3319010578126993'}, 'timestamp': 1583147658955, 'read': {'watermark': 1583147658399}}], 'time': 1583147658705, 'id': '108222204112368'}]}
+127.0.0.1 - - [02/Mar/2020 11:14:19] "POST / HTTP/1.1" 200 -
+
+
+
+
+
+
+以前的：
+chmod 400 /Users/georgeanna/Desktop/AWSKEY.pem
+
+ssh -i /Users/georgeanna/Desktop/AWSKEY.pem ubuntu@ec2-52-57-156-133.eu-central-1.compute.amazonaws.com
+
+# 查看网址
+curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url
